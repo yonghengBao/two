@@ -8,6 +8,7 @@ const baseWebpackConfig = require('./webpack.base.conf')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const SkeletonWebpackPlugin = require('vue-skeleton-webpack-plugin') // 骨架屏插件
 const portfinder = require('portfinder')
 
 const HOST = process.env.HOST
@@ -56,6 +57,26 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       filename: 'index.html',
       template: 'index.html',
       inject: true
+    }),
+    new SkeletonWebpackPlugin({
+      // 导入我定义的配置文件
+      webpackConfig: require('./webpack.skeleton.conf'),
+      quiet: true,
+      minimize: true,
+      router: {
+        mode: 'history',
+        routes: [
+          // 不同路由界面配置不同的模板
+          {
+            path: '/login',
+            skeletonId: 'skeleton1'
+          },
+          {
+            path: '/home',
+            skeletonId: 'skeleton2'
+          }
+        ]
+      }
     }),
     // copy custom static assets
     new CopyWebpackPlugin([
