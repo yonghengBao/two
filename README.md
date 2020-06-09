@@ -1,4 +1,8 @@
 # two
+打包优化
+
+1.使用gzip压缩，修改config/index.js  productionGzip的值改为true npm install --save-dev compression-webpack-plugin@1.1.2  使用最新版可能会报错
+  服务器上要配置开启gzip_static on;
 
 > A Vue.js project
 

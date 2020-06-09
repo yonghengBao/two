@@ -57,7 +57,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/dist/', // 配置打包输出的根路径，默认是/(改后将dist放在Nginx上后访问地址为http://localhost/dist)
+    assetsPublicPath: '/', // 配置打包输出的根路径，默认是/(改后将dist放在Nginx上后访问地址为http://localhost/dist)
 
     /**
      * Source Maps
@@ -71,7 +71,7 @@ module.exports = {
     // Surge or Netlify already gzip all static assets for you.
     // Before setting to `true`, make sure to:
     // npm install --save-dev compression-webpack-plugin
-    productionGzip: false,
+    productionGzip: true,
     productionGzipExtensions: ['js', 'css'],
 
     // Run the build command with an extra argument to
