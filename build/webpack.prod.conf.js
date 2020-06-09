@@ -14,7 +14,11 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 const env = require('../config/prod.env')
 
+
+const externalConfig = JSON.parse(JSON.stringify(utils.externalConfig)); // 使用cdn配置，读取配置
+const externalModules = utils.getExternalModules(externalConfig); // 使用cdn配置，获取到合适路径和忽略模块
 const webpackConfig = merge(baseWebpackConfig, {
+  externals: externalModules, // 使用cdn配置，构建时忽略的资源
   module: {
     rules: utils.styleLoaders({
       sourceMap: config.build.productionSourceMap,
@@ -65,6 +69,8 @@ const webpackConfig = merge(baseWebpackConfig, {
       filename: config.build.index,
       template: 'index.html',
       inject: true,
+      cdnConfig: externalConfig, // 使用cdn配置，cdn配置
+      onlyCss: false, // 使用cdn配置，加载css
       minify: {
         removeComments: true,
         collapseWhitespace: true,

@@ -14,7 +14,11 @@ const portfinder = require('portfinder')
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
+const externalConfig = JSON.parse(JSON.stringify(utils.externalConfig)); // 使用cdn配置，读取配置
+const externalModules = utils.getExternalModules(externalConfig); // 使用cdn配置，获取到合适路径和忽略模块
+
 const devWebpackConfig = merge(baseWebpackConfig, {
+  externals: externalModules, // 使用cdn配置，构建时忽略的资源
   module: {
     rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
   },
@@ -56,7 +60,9 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
-      inject: true
+      inject: true,
+      cdnConfig: externalConfig, // 使用cdn配置，cdn配置
+      onlyCss: false, // 使用cdn配置，加载css
     }),
     new SkeletonWebpackPlugin({
       // 导入我定义的配置文件
