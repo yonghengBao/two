@@ -33,7 +33,7 @@ service.interceptors.response.use(
   response => {
     // 仅返回数据部分
     const res = response.data;
-
+    return res;
     // code不为1则判定为一个错误
     if (res.code !==1) {
       // Message({

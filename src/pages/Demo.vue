@@ -15,6 +15,7 @@
       <button v-if="result('user')">个人中心</button>
     </p>
     <router-link to="/login">登录</router-link>
+    <router-link to="/directiveDemo">自定义指令</router-link>
   </div>
 </template>
 

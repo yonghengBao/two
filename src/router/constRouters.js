@@ -9,6 +9,10 @@ export const constRoutes = [
     path: "/login",
     component: () => import('@/pages/Login.vue'),
     hidden: true // 导航菜单忽略该项
+  },{
+    path: "/directiveDemo",
+    component: () => import('@/pages/DirectiveDemo.vue'),
+    hidden: true // 导航菜单忽略该项
   },
   {
     path: "/home",
