@@ -3,6 +3,9 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import ElementUI from 'element-ui';
+// import 'element-ui/lib/theme-chalk/index.css';
+// import './assets/style/custorEelmenttheme/index.css';
 // import 'babel-polyfill'
 
 import * as directives from './directives'
@@ -10,7 +13,7 @@ import * as components from './components'
 import store from './store'
 import './icons'
 // import './guard' // 路由权限
-
+Vue.use(ElementUI, { size: 'mini', zIndex: 3000 });
 // 全局自定义组件
 Object.keys(components).forEach(componentName => {
   Vue.component(componentName, components[componentName])

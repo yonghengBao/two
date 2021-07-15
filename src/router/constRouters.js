@@ -1,9 +1,15 @@
 // 通用页面：不需要守卫，可直接访问
 export const constRoutes = [
+
   {
     path: '/',
     name: 'demo',
     component: () => import('@/pages/Demo.vue')
+  },
+  {
+    path: '/changeTheme',
+    name: 'changeTheme',
+    component: () => import('@/pages/changeTheme.vue')
   },
   {
     path: "/login",

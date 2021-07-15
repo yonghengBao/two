@@ -7,6 +7,7 @@
     <% htmlWebpackPlugin.options.cdnConfig.forEach(function(item){ if(item.css){ %>
     <link href="<%= item.css %>" rel="stylesheet" />
     <% }}) %>
+    <link rel="stylesheet" id="style" href="/static/theme/elementDefault/index.css">
   </head>
   <body>
     <div id="app"></div>

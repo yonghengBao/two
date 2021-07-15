@@ -16,6 +16,7 @@
     </p>
     <router-link to="/login">登录</router-link>
     <router-link to="/directiveDemo">自定义指令</router-link>
+    <router-link to="/changeTheme">修改主题色</router-link>
   </div>
 </template>
 
