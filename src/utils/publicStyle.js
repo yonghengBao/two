@@ -1,7 +1,7 @@
 //  主题切换
 const cut = (theme) => {
   let cutcheack = theme=='dark'?true:false;
-  document.getElementsByTagName("body")[0].style.setProperty("--backgroundColor", cutcheack ? "red" : "#fff");
+  document.getElementsByTagName("body")[0].style.setProperty("--backgroundColor", cutcheack ? "green" : "#fff");
   document.getElementsByTagName("body")[0].style.setProperty("--fonntColor", cutcheack ? "#cecece" : "#333");
   document.getElementsByTagName("body")[0].style.setProperty("--backgroundMColor", cutcheack ? "#333" : "#eee");
   document.getElementsByTagName("body")[0].style.setProperty("--tableColor", cutcheack ? "#000" : "#d8d8d8");
