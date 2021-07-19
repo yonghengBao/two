@@ -12,12 +12,14 @@ import * as directives from './directives'
 import * as components from './components'
 import store from './store'
 import './icons'
+import * as echarts from 'echarts';
 // import './guard' // 路由权限
 Vue.use(ElementUI, { size: 'mini', zIndex: 3000 });
 // 全局自定义组件
 Object.keys(components).forEach(componentName => {
   Vue.component(componentName, components[componentName])
 })
+Vue.prototype.$echarts  = echarts;
 // 全局自定义指令
 Object.keys(directives).forEach(direcName => {
   Vue.directive(direcName, directives[direcName])
