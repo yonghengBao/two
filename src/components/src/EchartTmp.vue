@@ -6,6 +6,7 @@
 <script>
   import bus from "../../utils/bus";
   import {mapGetters} from "vuex";
+  import echartTheme from "../../utils/echartsTheme";
 
     export default {
         name: "EchartTmp",
@@ -25,6 +26,8 @@
         },
         created(){
             bus.$on('changeTheme',()=>{
+                this.chart.dispose(); // 先清空之前的图表
+                this.initChart('walden'); // 修改echarts 中的自定义主题
                 this.colorProp && this.reload(this[this.colorProp]);
             })
         },
@@ -36,10 +39,11 @@
             }
         },
         methods: {
-            initChart() {
+            initChart(theme =null) {
                 let chartDom = document.getElementById(this.id);
                 this.$nextTick(() => {
-                    this.chart = this.$echarts.init(chartDom)
+                    this.$echarts.registerTheme("walden", echartTheme); // 修改echarts 中的自定义主题
+                    this.chart = this.$echarts.init(chartDom,theme)
                     this.chart.showLoading({
                         text: '',
                         color: '#eee',
